@@ -20,7 +20,7 @@
   <title></title>
 </head>
 <body>
-<p id = "p1">Click on this text to update the chart with new data values (once).</p>
+<button id = "btn1">Click it!</button>
 
 <script>                                     //draw bar chart using svg.
 var w = 600;
@@ -80,7 +80,7 @@ svg
         .attr("fill", "white")
         .attr("text-anchor", "middle");
 
-d3.select("#p1")
+d3.select("#btn1")
         .on("click", function() {
 
           //New values for dataset
