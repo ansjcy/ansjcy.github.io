@@ -1,131 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <script type="text/javascript" src="d3.js"></script>
-  <style type="text/css">
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: black;
-      shape-rendering: crispEdges;
-    }
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script type="text/javascript" src="d3.js"></script>
 
-    .axis text {
-      font-family: sans-serif;
-      font-size: 11px;
-    }
+    <style type="text/css">
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: black;
+        shape-rendering: crispEdges;
+      }
 
-  </style>
-  <title></title>
-</head>
-<body>
-<p id = "p1">Click on this text to update the chart with new data values (once).</p>
+      .axis text {
+        font-family: sans-serif;
+        font-size: 11px;
+      }
 
-<script>                                     //draw bar chart using svg.
-var w = 600;
-var h = 250;
-var barPadding = 1;
-var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
-  11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+    </style>
 
-var xScale = d3.scale.ordinal()
-        .domain(d3.range(dataset.length))
-        .rangeRoundBands([0,w],0.05);
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Me</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/ansjcy/me" class="btn">View on GitHub</a>
+      <a href="https://github.com/ansjcy/me/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/ansjcy/me/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-var yScale = d3.scale.linear()
-        .domain([0, d3.max(dataset)])
-        .range([0, h]);
+    <section class="main-content">
+      <p id = "p1">Click on this text to update the chart with new data values (once).</p>
 
-var svg = d3
-        .select("body")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h);
-svg
-        .selectAll("rect")
-        .data(dataset)
-        .enter()
-        .append("rect")
-        .attr("x", function(d, i){
-          return xScale(i);
-        })
-        .attr("y", function(d){
-          return h - yScale(d);
-        })
-        .attr("width", xScale.rangeBand())
-        .attr("height", function(d){
-          return yScale(d);
-        })
-        .attr("fill", function(d){
-          return "rgb(0, 0, " + (d * 10) + ")";
-        });
-svg
-        .selectAll("text")
-        .data(dataset)
-        .enter()
-        .append("text")
-        .text(function(d){
-          return d;
-        })
-        .attr("x", function(d, i){
-          //return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
-          return (xScale(i) + xScale.rangeBand()/2);
-        })
-        .attr("y", function(d){
-          return h - yScale(d) + 14;
-        })
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "11px")
-        .attr("fill", "white")
-        .attr("text-anchor", "middle");
+      <h3><a id="welcome-to-my-page" class="anchor" href="#welcome-to-my-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to My Page.</h3>
 
-d3.select("#p1")
-        .on("click", function() {
+        <p>I'm now working on my index...have some patience!</p>
 
-          //New values for dataset
-          var numValues = dataset.length;               //Count original length of dataset
-          dataset = [];                                       //Initialize empty array
-          for (var i = 0; i < numValues; i++) {               //Loop numValues times
-            var newNumber = Math.floor(Math.random() * 25); //New random integer (0-24)
-            dataset.push(newNumber);                        //Add new number to array
-          }
+      <h3><a id="about-me" class="anchor" href="#about-me" aria-hidden="true"><span class="octicon octicon-link"></span></a>about me</h3>
 
-          //Update all rects
-          svg
-                  .selectAll("rect")
-                  .data(dataset)
-                  .transition()
-                  .delay(function(d,i){
-                    return i / dataset.length * 1000;
-                  })
-                  .duration(1000)
-            //.ease("bounce")
-                  .attr("y", function(d) {
-                    return h - yScale(d);
-                  })
-                  .attr("height", function(d) {
-                    return yScale(d);
-                  })
-                  .attr("fill", function(d) {   // <-- Down here!
-                    return "rgb(0, 0, " + (d * 10) + ")";
-                  });
-          svg
-                  .selectAll("text")
-                  .data(dataset)
-                  .transition()
-                  .duration(1000)
-                  .text(function(d) {
-                    return d;
-                  })
-                  .attr("x", function(d, i) {
-                    return xScale(i) + xScale.rangeBand() / 2;
-                  })
-                  .attr("y", function(d) {
-                    return h - yScale(d) + 14;
-                  });
+        <p>a student major in Computer Science...</p>
 
-        });
-</script>
-</body>
+      <h3><a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating pages manually</h3>
+
+        <p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+
+      <h3><a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+        <p>test</p>
+
+      <h3><a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+        <p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/ansjcy/me">Me</a> is maintained by <a href="https://github.com/ansjcy">ansjcy</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+
+  </body>
 </html>
+
